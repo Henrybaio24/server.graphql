@@ -1,0 +1,34 @@
+type Query {
+  me: User!
+  user(id: ID!): User
+  users: [User]!
+  product(id: ID!): Product
+  products: [Product]!
+}
+
+type Mutation {
+    signup(name: String!, email: String!, password: String!): User
+    createProduct(description: String! price: Float! imageUrl: String!): Product!
+}
+
+scalar Date
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  password: String!
+  products: [Product]
+  createdAt: Date!
+}
+
+type Product {
+    id: ID!
+    description: String!
+    price: Float!
+    imageUrl: String!
+    user: User!
+    createdAt: Date!
+}
+
+type CartItem

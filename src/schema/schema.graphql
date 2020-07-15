@@ -1,0 +1,41 @@
+type Query {
+  login(email: String!, password: String!): AuthData
+  user(id: ID!): User
+  users: [User]!
+  course(id: ID!): Course
+  courses: [Course]!
+}
+
+type Mutation {
+    signup(name: String!, email: String!, password: String!): User
+    createCourse(description: String! genero: String!): Course!
+    updateCourse(
+    id: ID!
+    description: String
+    genero: String
+  ): Course!
+}
+
+scalar Date
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  password: String!
+  courses: [Course]
+  createdAt: Date!
+}
+
+type Course {
+    id: ID!
+    description: String!
+    genero: String!
+    user: User!
+    createdAt: Date!
+}
+
+type AuthData {
+  userId: ID
+  jwt: String
+}

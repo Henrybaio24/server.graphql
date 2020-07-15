@@ -1,0 +1,12 @@
+type Query {
+  me: User!
+  user(id: ID!): user
+  users: [User]!
+}
+
+typ
+
+type User {
+  id: ID!
+  name: String!
+}
